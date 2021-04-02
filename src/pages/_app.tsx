@@ -1,22 +1,18 @@
-import GlobalStyle from './styles'
+import GlobalStyle from '../styles'
 import { ThemeProvider } from 'styled-components'
-// Component é o componente de cada página
+import { AppProps } from 'next/app'
 
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
+import theme from '../styles/theme'
 
-const MyApp = ({ Component, pageProps }) => {
+// Component: são todas as páginas
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
+      <Component {...pageProps} />
+    </ThemeProvider>
   )
 }
 
